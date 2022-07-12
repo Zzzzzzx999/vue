@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/index.css">
+    <title>主页</title>
+</head>
+<body>
+    <div class="message">
+        <div class="title">
+            <span>留言板</span>
+        </div>
+        <img src="https://img2.baidu.com/it/u=2639132004,499790573&fm=253&fmt=auto&app=138&f=JPEG?w=766&h=500" alt="">
+        <form name="form1" method="post" action="insertMessage.php" >
+            <table border="1" id="tables">
+              <tr><td colspan="2" align="center">留言发布</td></tr>
+              <tr>
+                <td>标题：</td>
+                <td><input type="text" name="title" /></td>
+              </tr>
+              <tr>
+                <td>类别：</td>
+                <td><select name="type">
+                      <option value=1>搞笑型</option>
+                      <option  value=2>祝愿型</option>
+                      <option  value=3>激励型</option>
+                      <option  value=4>褒扬型</option>
+                    <select>
+                </td>
+              </tr>
+              <tr>
+                <td colspan=2><input type="checkbox" name="display" value="0"/>隐藏
+                    <input type="checkbox" name="istop" value="1" />置顶
+                </td>
+              </tr>
+              <tr>
+                <td>内容：</td>
+                <td><textarea name="content" cols="70" rows="5"></textarea></td>
+              </tr>
+              <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" value="发表" />
+                    <input type="reset" value="清空" />
+                </td>
+              </tr>
+              </table>
+            </form>
+    </div>
+</body>
+</html>

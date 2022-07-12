@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>引出生命周期</title>
+    <script type="text/javascript" src="/js/vue.js"></script>
+</head>
+<body>
+    <div class="root">
+        <h2>当前的n值是:{{n}}</h2>
+        <button @click="add">点我n+1</button>
+        <button @click="destory">点我销毁vm</button>
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+
+        new Vue({
+            el:'.root',
+            data:{
+                n:1,
+            },
+            methods: {
+                add(){
+                    console.log('add');
+                    this.n++
+                },
+                destory(){
+                    console.log('bye');
+                    this.$destory()
+                }
+            },
+            beforeCreate() {
+                console.log('beforeCreate');
+            },
+            created() {
+                console.log('created');
+            },
+            beforeMount() {
+                console.log('beforeMount');
+                console.log(this);
+                debugger;
+            },
+            //Vue完成模板的解析并把初始的真实DOM元素放入页面后(挂载完毕)调用mounted
+            mounted() {
+              console.log('mounted');
+              debugger; 
+            },
+            //数据是新的,但是页面是旧的(页面还没更新)
+            beforeUpdate() {
+                console.log('beforeUpdate');
+            },
+            //数据和页面都是新的
+            updated() {
+                console.log('updated');
+            },
+            beforeDestroy() {
+                console.log('beforeDestroy');
+            },
+            destroyed() {
+                console.log('destroyed');
+            },
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>姓名案例_计算属性方法实现</title>
+    <script type="text/javascript" src="/js/vue.js"></script>
+</head>
+<body>
+    <div class="root">
+        姓:<input type="text" v-model="firstName"><br><br>
+        名:<input type="text" v-model="lastName"> <br><br>
+        全名: <span>{{fullName}}</span>
+    </div>
+    
+    <script type="text/javascript">
+        Vue.config.productionTip = false;
+
+        const vm = new Vue({
+            el:".root",
+            data:{
+                firstName:'张',
+                lastName:'三'
+            },
+            computed:{
+                fullName:{
+                    get(){
+                        return this.firstName + '-' + this.lastName
+                    },
+                    set(value){
+                        console.log('set',value)
+                        const arr = value.split('-')
+                        this.firstName = arr[0]
+                        this.lastName = arr[1]
+                    }
+                }
+                //简写计算属性(只用get不用set情况下使用)
+                /* fullName:function(){
+                    return this.firstName +'-' + this.lastName                    
+                } */
+            }
+        })
+    </script>
+</body>
+</html>

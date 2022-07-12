@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>理解MVVM</title>
+    <script type="text/javascript" src="/js/vue.js"></script>
+</head>
+<body>
+    <div class="root">
+        <h1>{{school}}</h1>
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false;
+        const v = new Vue({
+        data:{
+            school:'厦门工学院'
+        }
+    })
+    console.log(v)
+    v.$mount('.root')
+    </script>
+</body>
+</html>

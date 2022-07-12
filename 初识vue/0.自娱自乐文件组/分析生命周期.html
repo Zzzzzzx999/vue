@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/js/vue.js"></script>
+</head>
+<body>
+    <div class="root" :x="n">
+        <h1>n值为:{{n}}</h1>
+        <button @click="addN">点我n+1</button>
+        <button @click="bye">点我摧毁vm</button>
+    </div>
+    <script>
+        Vue.config.productionTip = false
+        const vm = new Vue({
+            el:'.root',
+            data:{
+                n:1,
+            },
+            methods: {
+                addN(){
+                    this.n++
+                },
+                bye(){
+                    vm.$destroy()
+                }
+            },
+            watch:{
+                n:{
+                    deep:true,
+                    handler(){
+                        console.log('n变了ma ');
+                    }
+                }
+            },
+            beforeDestroy() {
+                this.addN()
+                // debugger
+            },
+            destroyed() {
+                console.log('destory');
+            },
+        })
+    </script>
+</body>
+</html>

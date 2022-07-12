@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-text指令</title>
+    <script type="text/javascript" src="/js/vue.js"></script>
+</head>
+<body>
+    <div class="root">
+        {{name}}
+        <div v-text='name'></div>
+        <div v-text='name2'></div>
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+
+        new Vue({
+            el:'.root',
+            data:{
+                name:'周泽翔',
+                name2:'<h1>周泽翔</h1>'  //v-text不支持结构解析
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>绑定样式</title>
+    <style>
+        .basic{
+            color: black;
+            width: 266px;
+            height: 66px;
+        }
+        .happy{
+            background-color: aqua;
+        }
+        .sad{
+            background-color: brown;
+        }
+        .normal{
+            background-color: burlywood;
+        }
+        .s1{
+            font-size: 36px;
+            color-scheme: 12px;
+        }
+        .s2{
+            border: 3px solid burlywood;
+            border-radius: 8px;
+        }
+    </style>
+    <script type="text/javascript" src="/js/vue.js"></script>
+</head>
+<body>
+    <div class="root">
+        <div class="basic" :class="mood" @click="changeMood">{{name}}</div><br><br>
+        <div class="basic" :class="classObj">{{name}}</div>
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+
+        new Vue({
+            el:".root",
+            data:{
+                name:"今天的心情",
+                mood:"happy",
+                classObj:{
+                    s1:true,
+                    s2:false
+                }
+            },
+            methods: {
+                changeMood(){
+                    const arr = ["happy","sad","normal"]
+                    this.mood= arr[Math.floor(Math.random()*3)]
+                }
+            },
+        })
+    </script>
+</body>
+</html>

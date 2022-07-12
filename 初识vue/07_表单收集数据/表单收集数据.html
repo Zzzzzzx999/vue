@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表单收集数据</title>
+    <script type="text/javascript" src="/js/vue.js"></script>
+</head>
+<body>
+    <div class="root">
+        <form @submit.prevent="submits">
+            <!-- <label for="demo">账号：</label>
+            <input type="text" id="demo"> <br><br> -->
+            账号：<input type="text" id="demo" v-model.trim="userInfo.account"> <br/><br/>
+            密码：<input type="password" v-model="userInfo.password"> <br/><br/>
+            年龄：<input type="number" v-model.number="userInfo.age"> <br/><br/>
+            性别：
+            男<input type="radio" name="sex" value="male" v-model="userInfo.sex">
+            女<input type="radio" name="sex" value="female" v-model="userInfo.sex"> <br/><br/>
+            爱好：
+            吃饭<input type="checkbox" v-model="userInfo.hobby" value="eat">
+            睡觉<input type="checkbox" v-model="userInfo.hobby" value="sleep">
+            打游戏<input type="checkbox" v-model="userInfo.hobby" value="game"> <br/><br/>
+            所属校区：
+            <select v-model="userInfo.city">
+                <option value="">请选择校区</option>
+                <option value="beijing">北京</option>
+                <option value="shanghai">上海</option>
+                <option value="shenzhen">深圳</option>
+                <option value="guangzhou">广州</option>
+            </select> <br><br>      
+            其他信息：
+            <textarea v-model.lazy="userInfo.other" cols="30" rows="10"></textarea><br><br>
+            <input type="checkbox" v-model="userInfo.agree"> 阅读并接受<a href="https://www.baidu.com/">⟪用户协议⟫</a> <br><br>
+            <button>提交</button>
+        </form>
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false
+
+    new Vue({
+        el:'.root',
+        data:{
+            userInfo:{
+                account:'',
+                password:'',
+                age:'',
+                sex:'',
+                hobby:[],
+                city:'',
+                other:'',
+                agree:'',
+            }
+        },
+        methods: {
+            submits(){
+                console.log(JSON.stringify(this.userInfo))
+            }
+        },
+    })
+</script>
+</html>

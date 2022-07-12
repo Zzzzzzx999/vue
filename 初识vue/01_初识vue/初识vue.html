@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue</title>
+    <script type="text/javascript" src="/js/vue.js"></script>
+</head>
+<body>
+    <div class="root">
+        <h1>hello,{{name}},{{adress}}</h1>
+        <a v-bind:href="url">点击一下1</a><br>
+        <a :href="url">点击一下2</a><br>
+        单向数据绑定:<input type="text" v-bind:value="text1"> <br>
+        单向数据绑定:<input type="text" :value="text1"> <br>
+        双向数据绑定:<input type="text" v-model:value="text2"> <br>
+        双向数据绑定:<input type="text" v-model="text2"> <br>
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false;
+
+        /* new Vue({                    //el第一种写法
+            el:'.root',
+            data:{
+                name:'周',              //data的第一种写法
+                adress:'北京',
+                url:'http://www.baidu.com',
+                text1:'单向数据绑定',
+                text2:'双向数据绑定'
+            }
+        }) */
+
+        /* const v = new Vue({          //el第二种写法 
+            data:{
+                name:'周'
+            }
+        })
+        console.log(v)
+        v.$mount('.root') */
+
+        const v = new Vue({
+            data:function(){            //data的第二种写法   
+                return{
+                    name:'周',
+                    adress:'北京',
+                    url:'http://www.baidu.com',
+                    text1:'北京欢迎你!',
+                    text2:'上海欢迎你!',
+                }             
+            }
+        })
+        console.log(v)
+        v.$mount('.root')
+    </script>
+</body>
+</html>

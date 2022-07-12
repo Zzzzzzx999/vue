@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组件的嵌套</title>
+    <script type="text/javascript" src="/js/vue.js"></script>
+</head>
+<body>
+    <div class="root">
+        
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false;
+        
+        const student = Vue.extend({
+            name:'sss',
+            template:`
+            <div>
+                <h2>学生的姓名：{{name}}</h2>
+                <h2>学生的年龄：{{age}}</h2>
+            </div>
+            `,
+            data(){
+                return{
+                    name:'周泽翔',
+                    age:22
+                }
+            }
+        })
+
+        const school = Vue.extend({
+            template:`
+            <div>
+                <h2>学校的名字：{{name}}</h2>
+                <h2>学校的地址：{{address}}</h2>
+                <student></student>
+            </div>
+            `,
+            data() {
+                return {
+                    name:'厦门工学院',
+                    address:'厦门'
+                }
+            },
+            components:{
+                student
+            }
+        })
+
+        const hello = {
+            template:`
+            <div>
+                <h2>{{msg}}</h2>
+            </div>
+            `,
+            data(){
+                return{
+                    msg:'欢迎学习Vue'
+                }
+            }
+        }
+
+        const app = Vue.extend({
+            template:`
+            <div>
+                <school></school>
+                <hello></hello>
+            </div>
+            `,
+            components:{
+                school,
+                hello
+            }
+        })
+
+        
+
+        new Vue({
+            el:'.root',
+            template:`
+                <app></app>
+            `,
+            components:{
+                app
+            }
+        })
+    </script>
+</body>
+</html>
